@@ -19,13 +19,13 @@ export default class UsersController {
     try {
       const { id } = request.params;
       const repository = getRepository(User);
-      const existUser = await repository.findOne(id);
+      const user = await repository.findOne(id);
 
       // Checks existing user in database
-      if (!existUser)
+      if (!user)
         return response.status(404).json({ messege: 'User Not Found' });
 
-      return response.status(200).json(existUser);
+      return response.status(200).json(user);
     } catch (error) {
       return response
         .status(400)
