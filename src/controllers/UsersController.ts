@@ -69,11 +69,31 @@ export default class UsersController {
       user.email = email;
       await repository.save(user);
 
-      return response
-        .status(201)
-        .json({ email: email, messege: 'Success to update User' });
+      return response.status(201).json({
+        email: email,
+        messege: 'Success to update User',
+      });
     } catch (error) {
       return response.status(400).json({ messege: 'Error to update User' });
+    }
+  }
+
+  async deleteUsers(request: Request, response: Response) {
+    try {
+      const { id } = request.body;
+      const repository = getRepository(User);
+
+      // Checks existing User
+      const user = await repository.findOne(id);
+      if (!user)
+        return response.status(400).json({ messege: 'User Not Found' });
+
+      await repository.remove(user);
+      return response
+        .status(200)
+        .json({ messege: 'Success to remove User', name: user.name });
+    } catch (Error) {
+      return response.status(400).json({ messege: 'Error to remove User' });
     }
   }
 

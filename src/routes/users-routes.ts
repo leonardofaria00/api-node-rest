@@ -8,5 +8,6 @@ export class UserRoutes {
     app.get('/users/:id', this.controller.getUserById);
     app.post('/users', this.controller.postUsers);
     app.put('/users', this.controller.putUsers);
+    app.delete('/users', this.controller.deleteUsers);
   }
 }
