@@ -5,6 +5,7 @@ export class UserRoutes {
 
   public routes(app) {
     app.get('/users', this.controller.getUsers);
+    app.get('/users/:id', this.controller.getUserById);
     app.post('/users', this.controller.postUsers);
   }
 }

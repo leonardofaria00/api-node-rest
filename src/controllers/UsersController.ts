@@ -13,6 +13,24 @@ export default class UsersController {
     }
   }
 
+  async getUserById(request: Request, response: Response) {
+    try {
+      const { id } = request.params;
+      const repository = getRepository(User);
+      const existUser = await repository.findOne(id);
+
+      // Checks existing user in database
+      if (!existUser)
+        return response.status(404).json({ messege: 'User Not Found' });
+
+      return response.status(200).json(existUser);
+    } catch (error) {
+      return response
+        .status(400)
+        .json({ messege: 'Erro to find user with id' });
+    }
+  }
+
   async postUsers(request: Request, response: Response) {
     try {
       const repository = await getRepository(User);
