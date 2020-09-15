@@ -14,10 +14,10 @@ const connectDB = async (): Promise<any> => {
       synchronize: true,
       logging: false,
     });
-    console.log('Database conectado com sucesso!', connection);
+    console.log('Database successfully connected!');
     return connection;
   } catch (error) {
-    console.log('Erro ao conectar com o bando de dados', error);
+    console.log('Error connecting to the database: ', error);
   }
 };
 
