@@ -27,11 +27,11 @@
       "@models/*": [
         "src/v/*"
       ],
-      "@views/*": [
-        "./src/views/*"
-      ],
       "@config/*": [
         "./src/config/*"
+      ],
+      "@routes/*": [
+        "./src/routes/*"
       ]
     }
   },
