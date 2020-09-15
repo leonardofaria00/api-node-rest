@@ -9,7 +9,9 @@ export default class UsersController {
       const users = await repository.find();
       return response.status(200).json(users);
     } catch (error) {
-      return response.status(400).json({ messege: 'Erro to find users' });
+      return response
+        .status(400)
+        .json({ messege: 'Opps, error to find users' });
     }
   }
 
@@ -27,14 +29,14 @@ export default class UsersController {
     } catch (error) {
       return response
         .status(400)
-        .json({ messege: 'Erro to find user with id' });
+        .json({ messege: 'Error to find user with id' });
     }
   }
 
   async postUsers(request: Request, response: Response) {
     try {
-      const repository = await getRepository(User);
       const { name, email } = request.body;
+      const repository = await getRepository(User);
       const user = { name, email };
 
       // Checks existing email
@@ -47,7 +49,37 @@ export default class UsersController {
       await repository.save(user);
       return response.status(201).json(user);
     } catch (error) {
-      return response.status(400).json({ messege: 'Erro to insert user' });
+      return response
+        .status(400)
+        .json({ messege: 'Opps, error to insert user' });
     }
+  }
+
+  async putUsers(request: Request, response: Response) {
+    try {
+      const { id, email } = request.body;
+      const repository = getRepository(User);
+
+      // Checks existing User
+      const user = await repository.findOne(id);
+
+      if (!user)
+        return response.status(400).json({ messege: 'User Not Found' });
+
+      user.email = email;
+      await repository.save(user);
+
+      return response
+        .status(201)
+        .json({ email: email, messege: 'Success to update User' });
+    } catch (error) {
+      return response.status(400).json({ messege: 'Error to update User' });
+    }
+  }
+
+  private async checkExistsUser(id: User) {
+    // TODO
+    const repository = getRepository(User);
+    return await repository.findOne(id);
   }
 }
