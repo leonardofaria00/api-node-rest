@@ -3,7 +3,7 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  OneToMany,
+  ManyToOne,
 } from 'typeorm';
 import { User } from './User';
 
@@ -15,6 +15,6 @@ export class Post extends BaseEntity {
   @Column()
   messege: string;
 
-  @OneToMany((type) => User, (user) => user.posts)
+  @ManyToOne((type) => User, (user) => user.posts)
   user: User;
 }
