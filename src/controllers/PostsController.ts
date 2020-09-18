@@ -10,10 +10,17 @@ export class PostsController {
 
       const newPosts = posts.map((post) => {
         const objectReturn = {
-          postId: post.id,
-          message: post.messege,
-          userId: post.user.id,
-          userName: post.user.name,
+          post: {
+            id: post.id,
+            title: post.title,
+            photo: post.photo,
+            url: post.url,
+            message: post.messege,
+          },
+          user: {
+            id: post.user.id,
+            name: post.user.name,
+          },
         };
         return objectReturn;
       });
@@ -28,12 +35,20 @@ export class PostsController {
 
   async createPosts(request: Request, response: Response) {
     try {
-      const { messege, userId } = request.body;
+      const { title, messege, userId, url } = request.body;
+      const { filename } = request.file;
+
+      if (!request.file)
+        return response.json({ message: 'Please select an image to upload' });
+
       const repository = await getRepository(Post);
 
       const post = new Post();
+      post.title = title;
       post.messege = messege;
       post.user = userId;
+      post.photo = filename;
+      post.url = url;
 
       await repository.save(post);
       return response
