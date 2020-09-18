@@ -1,3 +1,4 @@
+import { Console } from 'console';
 import {
   BaseEntity,
   Entity,
@@ -13,7 +14,16 @@ export class Post extends BaseEntity {
   id: number;
 
   @Column()
+  title: string;
+
+  @Column()
   messege: string;
+
+  @Column()
+  photo: string;
+
+  @Column()
+  url: string;
 
   @ManyToOne((type) => User, (user) => user.posts)
   user: User;

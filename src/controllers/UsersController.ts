@@ -89,15 +89,16 @@ export default class UsersController {
         return response.status(400).json({ messege: 'User Not Found' });
 
       await repository.remove(user);
-      return response
-        .status(200)
-        .json({ messege: 'Success to remove User', name: user.name });
+      return response.status(200).json({
+        messege: 'Success to remove User',
+        name: user.name,
+      });
     } catch (Error) {
       return response.status(400).json({ messege: 'Error to remove User' });
     }
   }
 
-  private async checkExistsUser(id: User) {
+  private async checkExistsUser(id) {
     // TODO
     const repository = getRepository(User);
     return await repository.findOne(id);
