@@ -10,7 +10,7 @@ import { PostsRoutes } from '@routes/posts-routes';
 
 class App {
   public app: express.Application;
-  public apiRoutes: UserRoutes = new UserRoutes();
+  private apiRoutes: UserRoutes = new UserRoutes();
   private postRoutes: PostsRoutes = new PostsRoutes();
 
   constructor() {
