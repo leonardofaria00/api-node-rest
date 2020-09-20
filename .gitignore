@@ -1,3 +1,5 @@
 node_modules/
 dist/
 package-lock.json
+key.json
+src/upload-files
