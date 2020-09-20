@@ -5,15 +5,14 @@ import { Post } from '@models/Post';
 export class PostsController {
   async getPosts(request: Request, response: Response) {
     try {
-      const repositoryPost = getRepository(Post);
-      const posts = await repositoryPost.find({ relations: ['user'] });
+      const repository = getRepository(Post);
+      const posts = await repository.find({ relations: ['user'] });
 
       const newPosts = posts.map((post) => {
         const objectReturn = {
           post: {
             id: post.id,
             title: post.title,
-            photo: post.photo,
             url: post.url,
             message: post.messege,
           },
