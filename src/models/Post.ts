@@ -1,4 +1,3 @@
-import { Console } from 'console';
 import {
   BaseEntity,
   Entity,
@@ -18,9 +17,6 @@ export class Post extends BaseEntity {
 
   @Column()
   messege: string;
-
-  @Column()
-  photo: string;
 
   @Column()
   url: string;

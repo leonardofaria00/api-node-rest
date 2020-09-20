@@ -36,10 +36,6 @@ export class PostsController {
   async createPosts(request: Request, response: Response) {
     try {
       const { title, messege, userId, url } = request.body;
-      const { filename } = request.file;
-
-      if (!request.file)
-        return response.json({ message: 'Please select an image to upload' });
 
       const repository = await getRepository(Post);
 
@@ -47,10 +43,10 @@ export class PostsController {
       post.title = title;
       post.messege = messege;
       post.user = userId;
-      post.photo = filename;
       post.url = url;
 
       await repository.save(post);
+
       return response
         .status(201)
         .json({ message: 'Post created sucess', ...post });
