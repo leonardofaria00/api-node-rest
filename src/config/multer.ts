@@ -1,24 +1,23 @@
 import multer from 'multer';
 import path from 'path';
+import { v4 as uuidv4 } from 'uuid';
 
 export default {
-  dest: path.resolve(__dirname, '..', 'upload-files'),
+  dest: path.resolve(__dirname, '..', '..', 'uploads'),
   storage: multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, path.resolve(__dirname, '..', 'upload-files'));
+    destination: (req, file, callback) => {
+      callback(null, path.resolve(__dirname, '..', '..', 'uploads'));
     },
-    filename: (req, file, cb) => {
-      const dateNow = new Date();
-      const date = dateNow.getDate();
-      const month = dateNow.getMonth();
-      const year = dateNow.getFullYear();
+    filename: (req, file, callback) => {
+      const filename = `${uuidv4()} - ${file.originalname}`;
 
-      const filename = `${date}-${month}-${year} - ${file.originalname}`;
-
-      cb(null, filename);
+      callback(null, filename);
     },
   }),
-  fileFilter: (req, file, cb) => {
-    cb(null, true);
+  limits: {
+    fileSize: 2 * 1024 * 1024,
+  },
+  fileFilter: (req, file, callback) => {
+    callback(null, true);
   },
 };

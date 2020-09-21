@@ -21,6 +21,9 @@ export class Post extends BaseEntity {
   @Column()
   url: string;
 
+  @Column()
+  file: string;
+
   @ManyToOne((type) => User, (user) => user.posts)
   user: User;
 }

@@ -1,5 +1,5 @@
 node_modules/
+uploads/
 dist/
 package-lock.json
 key.json
-src/upload-files

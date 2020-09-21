@@ -15,6 +15,7 @@ export class PostsController {
             title: post.title,
             url: post.url,
             message: post.messege,
+            logo: post.file,
           },
           user: {
             id: post.user.id,
@@ -35,6 +36,7 @@ export class PostsController {
   async createPosts(request: Request, response: Response) {
     try {
       const { title, messege, userId, url } = request.body;
+      const file = request.file.filename;
 
       const repository = await getRepository(Post);
 
@@ -43,6 +45,7 @@ export class PostsController {
       post.messege = messege;
       post.user = userId;
       post.url = url;
+      post.file = file;
 
       await repository.save(post);
 
