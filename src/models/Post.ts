@@ -22,7 +22,10 @@ export class Post extends BaseEntity {
   url: string;
 
   @Column()
-  file: string;
+  fileName: string;
+
+  @Column()
+  originalName: string;
 
   @ManyToOne((type) => User, (user) => user.posts)
   user: User;

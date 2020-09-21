@@ -10,16 +10,19 @@ export class PostsController {
 
       const newPosts = posts.map((post) => {
         const objectReturn = {
+          user: {
+            id: post.user.id,
+            name: post.user.name,
+          },
           post: {
             id: post.id,
             title: post.title,
             url: post.url,
             message: post.messege,
-            logo: post.file,
           },
-          user: {
-            id: post.user.id,
-            name: post.user.name,
+          image: {
+            filename: post.fileName,
+            originalname: post.originalName,
           },
         };
         return objectReturn;
@@ -36,7 +39,7 @@ export class PostsController {
   async createPosts(request: Request, response: Response) {
     try {
       const { title, messege, userId, url } = request.body;
-      const file = request.file.filename;
+      const { filename, originalname } = request.file;
 
       const repository = await getRepository(Post);
 
@@ -45,7 +48,8 @@ export class PostsController {
       post.messege = messege;
       post.user = userId;
       post.url = url;
-      post.file = file;
+      post.fileName = filename;
+      post.originalName = originalname;
 
       await repository.save(post);
 
