@@ -19,6 +19,7 @@ export class PostsController {
             title: post.title,
             url: post.url,
             message: post.messege,
+            createdAt: post.date,
           },
           image: {
             filename: post.fileName,
