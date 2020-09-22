@@ -17,11 +17,11 @@ export class PostsController {
           post: {
             id: post.id,
             title: post.title,
-            url: post.url,
             message: post.messege,
             createdAt: post.date,
           },
           image: {
+            url: post.url,
             filename: post.fileName,
             originalname: post.originalName,
           },
