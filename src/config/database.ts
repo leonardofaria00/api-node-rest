@@ -1,5 +1,5 @@
 import { createConnection } from 'typeorm';
-import { response } from 'express';
+require('dotenv').config();
 
 const connectDB = async (): Promise<any> => {
   try {
@@ -7,9 +7,9 @@ const connectDB = async (): Promise<any> => {
       type: 'mysql',
       host: 'localhost',
       port: 3306,
-      username: 'leonardo',
-      password: 'password',
-      database: 'api_db',
+      username: process.env.DATABASE_USERNAME,
+      password: process.env.DATABASE_PASSWORD,
+      database: process.env.DATABASE_SCHEMA,
       entities: ['./src/models/*.ts'],
       synchronize: true,
       logging: false,

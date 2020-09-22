@@ -3,4 +3,4 @@ uploads/
 dist/
 package-lock.json
 key.json
-.env
+yarn.lock
