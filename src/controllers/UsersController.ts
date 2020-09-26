@@ -60,7 +60,7 @@ export default class UsersController {
       const existEmail = await repository.findOne({ email });
       if (existEmail)
         return response
-          .status(401)
+          .status(409)
           .json({ messege: 'E-mail already registered' });
 
       const userState = await repository.save(user);
