@@ -23,7 +23,7 @@ export class PostsController {
           image: {
             url: post.url,
             filename: post.filename,
-            originalname: post.originalName,
+            originalname: post.originalname,
           },
         };
         return obj;
@@ -42,14 +42,13 @@ export class PostsController {
       const { title, messege, userId } = request.body;
       const { key, originalname, location = '' } = request.file;
       const repository = await getRepository(Post);
-
       const post = new Post();
       post.user = userId;
       post.title = title;
       post.messege = messege;
       post.url = location;
       post.filename = key;
-      post.originalName = originalname;
+      post.originalname = originalname;
 
       await repository.save(post);
 
