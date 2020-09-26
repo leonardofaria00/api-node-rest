@@ -10,9 +10,9 @@ const StorageTypes = {
       callback(null, path.resolve(__dirname, '..', '..', 'uploads'));
     },
     filename: (req, file, callback) => {
-      const filename = `${uuidv4()} - ${file.originalname}`;
+      file.key = `${uuidv4()} - ${file.originalname}`;
 
-      callback(null, filename);
+      callback(null, file.key);
     },
   }),
   s3: multerS3({

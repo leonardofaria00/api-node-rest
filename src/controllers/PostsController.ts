@@ -9,7 +9,7 @@ export class PostsController {
       const posts = await repository.find({ relations: ['user'] });
 
       const newPosts = posts.map((post) => {
-        const objectReturn = {
+        const obj = {
           user: {
             id: post.user.id,
             name: post.user.name,
@@ -22,11 +22,11 @@ export class PostsController {
           },
           image: {
             url: post.url,
-            filename: post.fileName,
+            filename: post.filename,
             originalname: post.originalName,
           },
         };
-        return objectReturn;
+        return obj;
       });
 
       return response.status(200).json(newPosts);
@@ -39,17 +39,16 @@ export class PostsController {
 
   async createPosts(request: Request, response: Response) {
     try {
-      const { title, messege, userId, url } = request.body;
-      const { filename, originalname } = request.file;
-
+      const { title, messege, userId } = request.body;
+      const { key, originalname, location = '' } = request.file;
       const repository = await getRepository(Post);
 
       const post = new Post();
+      post.user = userId;
       post.title = title;
       post.messege = messege;
-      post.user = userId;
-      post.url = url;
-      post.fileName = filename;
+      post.url = location;
+      post.filename = key;
       post.originalName = originalname;
 
       await repository.save(post);
