@@ -22,7 +22,7 @@ export class Post extends BaseEntity {
   url: string;
 
   @Column()
-  fileName: string;
+  filename: string;
 
   @Column()
   originalName: string;
