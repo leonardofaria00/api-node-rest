@@ -7,7 +7,17 @@ export default class UsersController {
     try {
       const repository = getRepository(User);
       const users = await repository.find();
-      return response.status(200).json(users);
+
+      const userDTO = users.map((user) => {
+        const obj = {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+        };
+        return obj;
+      });
+
+      return response.status(200).json(userDTO);
     } catch (error) {
       return response
         .status(400)
@@ -25,7 +35,13 @@ export default class UsersController {
       if (!user)
         return response.status(404).json({ messege: 'User Not Found' });
 
-      return response.status(200).json(user);
+      const userDTO = {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+      };
+
+      return response.status(200).json(userDTO);
     } catch (error) {
       return response
         .status(400)
@@ -35,9 +51,10 @@ export default class UsersController {
 
   async postUsers(request: Request, response: Response) {
     try {
-      const { name, email } = request.body;
+      const { name, email, password } = request.body;
       const repository = await getRepository(User);
-      const user = { name, email };
+
+      const user = { name, email, password };
 
       // Checks existing email
       const existEmail = await repository.findOne({ email });
@@ -46,8 +63,18 @@ export default class UsersController {
           .status(401)
           .json({ messege: 'E-mail already registered' });
 
-      await repository.save(user);
-      return response.status(201).json(user);
+      const userState = await repository.save(user);
+
+      const userDTO = {
+        id: userState.id,
+        name: userState.name,
+        email: userState.email,
+      };
+
+      return response.status(201).json({
+        message: 'User created successfully!',
+        userDTO,
+      });
     } catch (error) {
       return response
         .status(400)
