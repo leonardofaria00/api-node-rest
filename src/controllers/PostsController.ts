@@ -54,7 +54,7 @@ export class PostsController {
 
       return response
         .status(201)
-        .json({ message: 'Post created sucess', ...post });
+        .json({ message: 'Post created success', ...post });
     } catch (error) {
       return response
         .status(400)
