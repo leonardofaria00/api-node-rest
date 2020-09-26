@@ -74,6 +74,8 @@ Studying Node in order to understand the main features.
 - [MySQL](https://www.mysql.com/)
 - [TypeORM](https://typeorm.io/#/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [AWS S3](https://aws.amazon.com/pt/s3/)
+- [JWT](https://jwt.io/)
 
 <!-- GETTING STARTED -->
 
@@ -109,11 +111,11 @@ git clone https://github.com/leonardofaria00/api-rest.git
 yarn install
 ```
 
-<!-- 3. Enter your API in `config.js`
+3. Run API with NodeJS
 
-```JS
-const API_KEY = 'ENTER YOUR API';
-``` -->
+```sh
+yarn dev
+```
 
 <!-- USAGE EXAMPLES -->
 
