@@ -33,8 +33,17 @@ export default {
   storage: StorageTypes[process.env.LOCAL_STORAGE],
   limits: {
     fileSize: 2 * 1024 * 1024,
+    files: 1,
   },
   fileFilter: (req, file, callback) => {
-    callback(null, true);
+    const typeArray = file.mimetype.split('/');
+    const fileType = typeArray[1];
+    const minitypes: string[] = ['jpg', 'png', 'jpeg'];
+
+    if (minitypes.includes(fileType)) {
+      callback(null, true);
+    } else {
+      callback(new Error('File not allowed!'));
+    }
   },
 };
