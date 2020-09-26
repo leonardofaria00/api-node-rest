@@ -25,7 +25,7 @@ export class Post extends BaseEntity {
   filename: string;
 
   @Column()
-  originalName: string;
+  originalname: string;
 
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   date: Date;
