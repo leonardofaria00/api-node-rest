@@ -8,7 +8,7 @@ export class PostsController {
       const repository = getRepository(Post);
       const posts = await repository.find({ relations: ['user'] });
 
-      const newPosts = posts.map((post) => {
+      const postDTO = posts.map((post) => {
         const obj = {
           user: {
             id: post.user.id,
@@ -29,7 +29,7 @@ export class PostsController {
         return obj;
       });
 
-      return response.status(200).json(newPosts);
+      return response.status(200).json(postDTO);
     } catch (error) {
       return response
         .status(400)
