@@ -11,7 +11,7 @@ import 'reflect-metadata';
 
 class App {
   public app: express.Application;
-  private apiRoutes: UserRoutes = new UserRoutes();
+  private userRoutes: UserRoutes = new UserRoutes();
   private postRoutes: PostsRoutes = new PostsRoutes();
   private authRoutes: AuthRoutes = new AuthRoutes();
 
@@ -19,7 +19,7 @@ class App {
     this.app = express();
     this.middlewares();
     this.database();
-    this.apiRoutes.routes(this.app);
+    this.userRoutes.routes(this.app);
     this.postRoutes.routes(this.app);
     this.authRoutes.routes(this.app);
 
