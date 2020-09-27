@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import { User } from 'src/models/User';
+import bcrypt from 'bcryptjs';
 
 export default class UsersController {
   async getUsers(request: Request, response: Response) {
@@ -54,11 +55,12 @@ export default class UsersController {
       const { name, email, password } = request.body;
       const repository = await getRepository(User);
 
-      const user = { name, email, password };
+      const hashPassword = await bcrypt.hashSync(`${password}`, 10);
 
-      // Checks existing email
-      const existEmail = await repository.findOne({ email });
-      if (existEmail)
+      const user = { name, email, hashPassword };
+
+      const emailExists = await repository.findOne({ email });
+      if (emailExists)
         return response
           .status(409)
           .json({ messege: 'E-mail already registered' });

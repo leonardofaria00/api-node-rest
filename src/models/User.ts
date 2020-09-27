@@ -19,7 +19,7 @@ export class User extends BaseEntity {
   email: string;
 
   @Column()
-  password: string;
+  hashPassword: string;
 
   @OneToMany((type) => Post, (post) => post.user)
   posts: Post[];
