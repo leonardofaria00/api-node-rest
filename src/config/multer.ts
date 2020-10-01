@@ -20,7 +20,7 @@ const StorageTypes = {
     bucket: process.env.AWS_BUCKET_NAME,
     contentType: multerS3.AUTO_CONTENT_TYPE,
     acl: 'public-read',
-    key: function (req, file, callback) {
+    key: (req, file, callback) => {
       const filename = `${uuidv4()} - ${file.originalname}`;
 
       callback(null, filename);
