@@ -1,15 +1,15 @@
-import { createConnection } from 'typeorm';
+import { Connection, createConnection } from 'typeorm';
 require('dotenv').config();
 
-const connectDB = async (): Promise<any> => {
+const connectDB = async (): Promise<Connection> => {
   try {
     const connection = await createConnection({
       type: 'mysql',
-      host: 'localhost',
       port: 3306,
-      username: process.env.DATABASE_USERNAME,
-      password: process.env.DATABASE_PASSWORD,
-      database: process.env.DATABASE_SCHEMA,
+      host: process.env.DATABASE_AWS_HOST,
+      username: process.env.DATABASE_AWS_USERNAME,
+      password: process.env.DATABASE_AWS_PASSWORD,
+      database: process.env.DATABASE_AWS_SCHEMA,
       entities: ['./src/models/*.ts'],
       synchronize: true,
       logging: false,
