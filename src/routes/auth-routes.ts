@@ -4,6 +4,6 @@ export class AuthRoutes {
   private controller: AuthController = new AuthController();
 
   public routes(app) {
-    app.post('/oauth/authorize', this.controller.authorize);
+    app.post('/auth', this.controller.authorize);
   }
 }
