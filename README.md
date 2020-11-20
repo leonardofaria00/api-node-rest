@@ -25,7 +25,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/leonardofaria00/api-node-rest">
-    <img src="https://nodejs.org/static/images/logo.svg" alt="Logo" width="80" height="80">
+    <img src="https://nodejs.org/static/images/logo.svg" alt="Logo" width="150" height="150">
   </a>
 
   <h3 align="center">API Node Rest</h3>
