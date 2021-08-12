@@ -24,8 +24,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/leonardofaria00/api-rest">
-    <img src="https://nodejs.org/static/images/logo.svg" alt="Logo" width="80" height="80">
+  <a href="https://github.com/leonardofaria00/api-node-rest">
+    <img src="https://nodejs.org/static/images/logo.svg" alt="Logo" width="150" height="150">
   </a>
 
   <h3 align="center">API Node Rest</h3>
@@ -33,14 +33,14 @@
   <p align="center">
    Estudando Nodejs com objetivo de entender as funcionalidades e soluções proposta pelo framework.
     <br />
-    <a href="https://github.com/leonardofaria00/api-rest"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/leonardofaria00/api-node-rest"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/leonardofaria00/api-rest">View Demo</a>
+    <a href="https://github.com/leonardofaria00/api-node-rest">View Demo</a>
     ·
-    <a href="https://github.com/leonardofaria00/api-rest/issues">Report Bug</a>
+    <a href="https://github.com/leonardofaria00/api-node-rest/issues">Report Bug</a>
     ·
-    <a href="https://github.com/leonardofaria00/api-rest/issues">Request Feature</a>
+    <a href="https://github.com/leonardofaria00/api-node-rest/issues">Request Feature</a>
   </p>
 </p>
 
@@ -102,7 +102,7 @@ npm install npm@latest -g
 1. Clone the repository
 
 ```sh
-git clone https://github.com/leonardofaria00/api-rest.git
+git clone https://github.com/leonardofaria00/api-node-rest.git
 ```
 
 2. Install Yarn packages
@@ -131,7 +131,7 @@ TODO
 
 ## Roadmap
 
-See the [open issues](https://github.com/leonardofaria00/api-rest/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/leonardofaria00/api-node-rest/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 
@@ -157,7 +157,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Leonardo F. Santos - [My profile](https://linktr.ee/faria.leo) - leonardofaria00@gmail.com
 
-Project Link: [https://github.com/leonardofaria00/api-rest](https://github.com/leonardofaria00/api-rest)
+Project Link: [https://github.com/leonardofaria00/api-node-rest](https://github.com/leonardofaria00/api-node-rest)
 
 <!-- ACKNOWLEDGEMENTS -->
 
