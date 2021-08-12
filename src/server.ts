@@ -1,21 +1,28 @@
 import express, { response, Router } from 'express';
-import helmet from 'helmet';
 import cors from 'cors';
-import bodyparser from 'body-parser';
+import helmet from 'helmet';
 import morgan from 'morgan';
+import bodyparser from 'body-parser';
 import connectDB from '@config/database';
+import { AuthRoutes } from '@routes/auth-routes';
 import { UserRoutes } from '@routes/users-routes';
+import { PostsRoutes } from '@routes/posts-routes';
 import 'reflect-metadata';
 
 class App {
   public app: express.Application;
-  public apiRoutes: UserRoutes = new UserRoutes();
+  private userRoutes: UserRoutes = new UserRoutes();
+  private postRoutes: PostsRoutes = new PostsRoutes();
+  private authRoutes: AuthRoutes = new AuthRoutes();
 
   constructor() {
     this.app = express();
     this.middlewares();
     this.database();
-    this.apiRoutes.routes(this.app);
+    this.userRoutes.routes(this.app);
+    this.postRoutes.routes(this.app);
+    this.authRoutes.routes(this.app);
+
     const port = 3000;
     this.app.listen(port, () =>
       console.log(`Run API at http://localhost:${port}`)

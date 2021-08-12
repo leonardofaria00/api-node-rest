@@ -25,7 +25,7 @@
         "./src/controllers/*"
       ],
       "@models/*": [
-        "src/v/*"
+        "./src/models/*"
       ],
       "@config/*": [
         "./src/config/*"

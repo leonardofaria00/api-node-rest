@@ -1,15 +1,15 @@
-import { createConnection } from 'typeorm';
-import { response } from 'express';
+import { Connection, createConnection } from 'typeorm';
+require('dotenv').config();
 
-const connectDB = async (): Promise<any> => {
+const connectDB = async (): Promise<Connection> => {
   try {
     const connection = await createConnection({
       type: 'mysql',
-      host: 'localhost',
       port: 3306,
-      username: 'leonardo',
-      password: 'password',
-      database: 'api_db',
+      host: process.env.DATABASE_AWS_HOST,
+      username: process.env.DATABASE_AWS_USERNAME,
+      password: process.env.DATABASE_AWS_PASSWORD,
+      database: process.env.DATABASE_AWS_SCHEMA,
       entities: ['./src/models/*.ts'],
       synchronize: true,
       logging: false,
