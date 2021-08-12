@@ -1,11 +1,10 @@
-{
+module.exports = {
     "env": {
-        "es2020": true,
-        "node": true,
-        "jest": true
+        "browser": true,
+        "es2020": true
     },
     "extends": [
-        "standard"
+        "airbnb-base"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -15,5 +14,7 @@
     "plugins": [
         "@typescript-eslint"
     ],
-    "rules": {}
-}
+    "rules": {
+        "import/no-cycle": off
+    }
+};
